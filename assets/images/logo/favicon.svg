@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #dcc7c2;
+      }
+
+      .cls-2 {
+        fill: #ddaaa0;
+        font-family: MontserratAlt1-ExtraBold, Montserrat-Alt1;
+        font-size: 355.77px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="18.51" y="16.64" width="480.77" height="480.77" rx="20" ry="20"/>
+  <text class="cls-2" transform="translate(108.89 381.55)"><tspan x="0" y="0">G</tspan></text>
+</svg>

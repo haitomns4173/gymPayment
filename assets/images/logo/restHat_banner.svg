@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 615 320">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d19e93;
+        font-size: 60px;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: MontserratAlt1-ExtraBold, Montserrat-Alt1;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        fill: #dcc7c2;
+      }
+
+      .cls-4 {
+        fill: #f7f2ef;
+      }
+
+      .cls-5 {
+        letter-spacing: .02em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        fill: #ddaaa0;
+        font-size: 148px;
+      }
+
+      .cls-7 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-8 {
+        letter-spacing: .02em;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" x="2.1" width="615" height="320"/>
+  <g>
+    <rect class="cls-3" x="207.5" y="16.86" width="200" height="200" rx="20" ry="20"/>
+    <text class="cls-2" transform="translate(245.1 168.66)"><tspan x="0" y="0">G</tspan></text>
+  </g>
+  <text class="cls-1" transform="translate(63.36 296.64)"><tspan class="cls-8" x="0" y="0">G</tspan><tspan class="cls-5" x="47.52" y="0">Y</tspan><tspan class="cls-8" x="90.06" y="0">M </tspan><tspan class="cls-7" x="167.4" y="0">P</tspan><tspan class="cls-6" x="210.24" y="0">A</tspan><tspan class="cls-5" x="255.96" y="0">Y</tspan><tspan class="cls-8" x="298.5" y="0">MENT</tspan></text>
+</svg>
