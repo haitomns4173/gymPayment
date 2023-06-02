@@ -2,7 +2,7 @@
 $serverName = "localhost";
 $username = "root";
 $password = "";
-$dbname = "gymBill";
+$dbname = "gympayment";
 
 // $username = "haitomns_restHat";
 // $password = "CjaC@SrogPka$RkDE59g";

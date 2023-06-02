@@ -2,11 +2,14 @@
 include 'sqlConnection.php';
 
 $member_name = $_POST['member_name'];
+$member_parentName = $_POST['member_parentName'];
 $member_phone = $_POST['member_phone'];
 $member_address = $_POST['member_address'];
 $member_bloodgroup = $_POST['member_bloodgroup'];
 $member_height = $_POST['member_height'];
 $member_weight = $_POST['member_weight'];
+$member_dues = $_POST['member_dues'];
+
 
 if (isset($_FILES['member_image'])) {
     $errors = array();
@@ -33,7 +36,7 @@ if (isset($_FILES['member_image'])) {
 
         $file_directory = "images/" . $file_name;
 
-        $sql = "INSERT INTO `members_list`(`member_id`, `full_name`, `phone`, `address`, `blood_group`, `height`, `weight`, `member_image`) VALUES (null,'".$member_name."','".$member_phone."','".$member_address."','".$member_bloodgroup."','".$member_height."','".$member_weight."','".$file_directory."')";
+        $sql = "INSERT INTO `members_list`(`member_id`, `full_name`, `parent_name`, `phone`, `address`, `blood_group`, `height`, `weight`, `dues`, `member_image`) VALUES (null,'".$member_name."','".$member_parentName."','".$member_phone."','".$member_address."','".$member_bloodgroup."','".$member_height."','".$member_weight."',".$member_dues.",'".$file_directory."')";
         if ($conn->query($sql) === TRUE) {
             echo "<script>alert('New record created successfully');</script>";
             echo "<script>window.location.href = '../members.php';</script>";

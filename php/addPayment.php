@@ -14,12 +14,29 @@ if($result->num_rows == 0){
     exit();
 }
 
-$sql = "INSERT INTO `payment_list`(`payment_Id`, `member_id`, `payment_amt`, `date`) VALUES (null,'".$member_id."','".$amount."','".$payment_date."')";
-if(mysqli_query($conn,$sql)){
-    echo "<Script>alert('Payment Added Successfully');</Script>";
-    echo "<Script>window.location.href='../payment.php';</Script>";
+$row = $result->fetch_assoc();
+if($row['dues'] > 0 && $row['dues'] <= $amount){
+    $left_dues = 0;
+} 
+else if($row['dues'] > 0 && $row['dues'] > $amount){
+    $left_dues = $row['dues'] - $amount;
+}
+else{
+    $left_dues = 0;
+}
+
+$sql_update_dues = "UPDATE `members_list` SET `dues`=".$left_dues." WHERE member_id = '$member_id'";
+
+if(mysqli_query($conn,$sql_update_dues)){
+    $sql = "INSERT INTO `payment_list`(`payment_Id`, `member_id`, `payment_amt`, `paid_date`) VALUES (null,'".$member_id."','".$amount."','".$payment_date."')";
+    if(mysqli_query($conn,$sql)){
+        echo "<Script>alert('Payment Added Successfully');</Script>";
+        echo "<Script>window.location.href='../payment.php';</Script>";
+    }else{
+        echo "<Script>alert('Payment Not Added');</Script>";
+        echo "<Script>window.location.href='../payment.php';</Script>";
+    }
 }else{
-    echo "<Script>alert('Payment Not Added');</Script>";
+    echo "<Script>alert('Dues Not Updated');</Script>";
     echo "<Script>window.location.href='../payment.php';</Script>";
 }
-?>

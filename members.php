@@ -138,6 +138,12 @@ if (!isset($_SESSION['loggedIn'])) {
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
+                                                        <label for="first-name-vertical">Parent Name</label>
+                                                        <input type="text" id="first-name-vertical" class="form-control" name="member_parentName" placeholder="Parent Name" data-parsley-required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
                                                         <label for="email-id-vertical">Phone</label>
                                                         <input type="number" id="email-id-vertical" class="form-control" name="member_phone" placeholder="Phone Number" data-parsley-required />
                                                     </div>
@@ -164,6 +170,12 @@ if (!isset($_SESSION['loggedIn'])) {
                                                     <div class="form-group">
                                                         <label for="contact-info-vertical">Weight</label>
                                                         <input type="text" id="contact-info-vertical" class="form-control" name="member_weight" placeholder="Weight in Kilogram" data-parsley-required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="contact-info-vertical">Previous Dues</label>
+                                                        <input type="number" id="contact-info-vertical" class="form-control" name="member_dues" placeholder="Total Dues" data-parsley-required />
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -223,7 +235,8 @@ if (!isset($_SESSION['loggedIn'])) {
                                                                 <td>
                                                                     Name : " . $row['full_name'] . "<br>
                                                                     Phone : " . $row['phone'] . "<br>
-                                                                    Blood Group : " . $row['blood_group'] . "
+                                                                    Blood Group : " . $row['blood_group'] . " <br>
+                                                                    Dues : " . $row['dues'] . "
                                                                 </td>
                                                                 <td>
                                                                     <a href='memberUpdate.php?member_id=" . $row['member_id'] . "' class='btn icon btn-primary'><i class='bi bi-pencil'></i></a>

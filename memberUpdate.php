@@ -64,14 +64,14 @@ if (!isset($_SESSION['loggedIn'])) {
                 <div class="sidebar-menu">
                     <ul class="menu">
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a href="index.php" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item active">
                             <a href="members.php" class="sidebar-link">
                                 <i class="bi bi-menu-button-wide-fill"></i>
                                 <span>Members</span>
@@ -133,11 +133,13 @@ if (!isset($_SESSION['loggedIn'])) {
                             $row = mysqli_fetch_assoc($result);
 
                             $member_name = $row['full_name'];
+                            $member_parentName = $row['parent_name'];
                             $member_phone = $row['phone'];
                             $member_address = $row['address'];
                             $member_bloodGroup = $row['blood_group'];
                             $member_height = $row['height'];
                             $member_weight = $row['weight'];
+                            $member_dues = $row['dues'];
                             $member_image = $row['member_image'];
                         } else {
                             echo "Error Updating Menu";
@@ -154,6 +156,12 @@ if (!isset($_SESSION['loggedIn'])) {
                                                     <div class="form-group">
                                                         <label for="first-name-vertical">Name</label>
                                                         <input type="text" id="first-name-vertical" class="form-control" name="member_name" placeholder="Full Name" value="<?php echo $member_name ?>" data-parsley-required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="first-name-vertical">Parent Name</label>
+                                                        <input type="text" id="first-name-vertical" class="form-control" name="member_parentName" placeholder="Parent Name" value="<?php echo $member_parentName ?>" data-parsley-required />
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -184,6 +192,12 @@ if (!isset($_SESSION['loggedIn'])) {
                                                     <div class="form-group">
                                                         <label for="contact-info-vertical">Weight</label>
                                                         <input type="text" id="contact-info-vertical" class="form-control" name="member_weight" placeholder="Weight in Kilogram" value="<?php echo $member_weight ?>" data-parsley-required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="contact-info-vertical">Previous Dues</label>
+                                                        <input type="number" id="contact-info-vertical" class="form-control" name="member_dues" placeholder="Total Dues" value="<?php echo $member_dues ?>" data-parsley-required />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex justify-content-end">

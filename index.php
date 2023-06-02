@@ -145,7 +145,7 @@ if (!isset($_SESSION['loggedIn'])) {
                             echo "<td>" . $row['full_name'] . "</td>";
                             echo "<td>" . $row['phone'] . "</td>";
                             echo "<td>" . $row['payment_amt'] . "</td>";
-                            echo "<td>" . $row['date'] . "</td>";
+                            echo "<td>" . $row['paid_date'] . "</td>";
                             echo "<td>
                             <a href='php/deleteMemberPayment.php?member_id=" . $row['payment_Id'] . "' class='btn icon btn-danger'><i class='bi bi-trash'></i></a>
                             </td>";
@@ -166,10 +166,7 @@ if (!isset($_SESSION['loggedIn'])) {
           </div>
         </div>
       </section>
-      </section>
-    </div>
-
-    <footer>
+      <footer>
       <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
           <p>
@@ -187,6 +184,7 @@ if (!isset($_SESSION['loggedIn'])) {
         </div>
       </div>
     </footer>
+    </div>
   </div>
 
   <script src="assets/js/bootstrap.js"></script>
