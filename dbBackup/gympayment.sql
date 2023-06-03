@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 04:55 AM
+-- Generation Time: Jun 02, 2023 at 12:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gymbill`
+-- Database: `gympayment`
 --
 
 -- --------------------------------------------------------
@@ -36,10 +36,14 @@ CREATE TABLE `adminregistereduser` (
   `createdDateTime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `adminregistereduser`
+--
 
 INSERT INTO `adminregistereduser` (`userIdentity`, `userEmail`, `userPermissionNo`, `userName`, `passwordHash`, `createdDateTime`) VALUES
 (1, 'haitomnsgroups@gmail.com', 1, 'haitomnsGroups', '$2y$10$AX/MqXTs6raPoUXuo0QEYONBrAyQNjgbhcYQwO8/v94zROPP2nZTC', '2023-04-19 08:43:34');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `members_list`
@@ -48,11 +52,13 @@ INSERT INTO `adminregistereduser` (`userIdentity`, `userEmail`, `userPermissionN
 CREATE TABLE `members_list` (
   `member_id` int(11) NOT NULL,
   `full_name` varchar(256) NOT NULL,
+  `parent_name` varchar(512) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(512) NOT NULL,
   `blood_group` varchar(5) NOT NULL,
   `height` varchar(5) NOT NULL,
   `weight` varchar(5) NOT NULL,
+  `dues` float NOT NULL,
   `member_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,7 +72,8 @@ CREATE TABLE `payment_list` (
   `payment_Id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `payment_amt` float NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `left_dues` float NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -77,7 +84,7 @@ CREATE TABLE `payment_list` (
 -- Indexes for table `adminregistereduser`
 --
 ALTER TABLE `adminregistereduser`
-  ADD PRIMARY KEY (`userIdentity`);
+  ADD PRIMARY KEY (`userIdentity`) USING BTREE;
 
 --
 -- Indexes for table `members_list`
@@ -100,7 +107,7 @@ ALTER TABLE `payment_list`
 -- AUTO_INCREMENT for table `adminregistereduser`
 --
 ALTER TABLE `adminregistereduser`
-  MODIFY `userIdentity` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userIdentity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `members_list`

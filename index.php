@@ -111,6 +111,8 @@ if (!isset($_SESSION['loggedIn'])) {
         <h3>Gym Statistics</h3>
       </div>
 
+
+
       <section class="section">
         <div class="row" id="table-hover-row">
           <div class="col-12">
@@ -145,7 +147,7 @@ if (!isset($_SESSION['loggedIn'])) {
                             echo "<td>" . $row['full_name'] . "</td>";
                             echo "<td>" . $row['phone'] . "</td>";
                             echo "<td>" . $row['payment_amt'] . "</td>";
-                            echo "<td>" . $row['paid_date'] . "</td>";
+                            echo "<td>" . $row['date'] . "</td>";
                             echo "<td>
                             <a href='php/deleteMemberPayment.php?member_id=" . $row['payment_Id'] . "' class='btn icon btn-danger'><i class='bi bi-trash'></i></a>
                             </td>";
@@ -164,26 +166,82 @@ if (!isset($_SESSION['loggedIn'])) {
               </div>
             </div>
           </div>
+
+          <div class="col-12 col-lg-4">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-body">
+                  <h5 class="card-title">Members Due List</h5>
+                  <input type="text" class="form-control" id="searchInput" onkeyup="searchTable()" placeholder="Search..."> <br>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Image</th>
+                          <th>NAME</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
+                          include 'php/sqlConnection.php';
+                          include 'php/NepaliCalender.php';
+                          $currentDate = date('Y-m-d');
+
+                          $nep_invoice_date = NepaliCalender::getInstance()->eng_to_nep($currentDate);
+
+                          //adding zero in front of month and date if it is single digit
+                          if (strlen($nep_invoice_date['month']) == 1) {
+                            $nep_invoice_date['month'] = '0' . $nep_invoice_date['month'];
+                          }
+                          if (strlen($nep_invoice_date['date']) == 1) {
+                            $nep_invoice_date['date'] = '0' . $nep_invoice_date['date'];
+                          }
+                          $nep_year = $nep_invoice_date['year'];
+                          $nep_month = $nep_invoice_date['month'];
+                          $nep_invoice_date = $nep_invoice_date['year'] . '.' . $nep_invoice_date['month'] . '.' . $nep_invoice_date['date'];
+
+                          $sql = "SELECT * FROM `payment_list` INNER JOIN members_list ON payment_list.member_id = members_list.member_id WHERE payment_list.date <> '$nep_year-$nep_month-%' && payment_list.date < '$nep_year-$nep_month-%'";
+                          $result = mysqli_query($conn, $sql);
+                          while ($row_dues = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row_dues['member_id'] . "</td>";
+                            echo "<td><img src='php\\" . $row_dues['member_image'] . "' height='80' width='80' /></td>";
+                            echo "<td>" . $row_dues['full_name'] . "</td>";
+                            echo "</tr>";
+                          }
+
+                          ?>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
       <footer>
-      <div class="footer clearfix mb-0 text-muted">
-        <div class="float-start">
-          <p>
-            <script>
-              document.write(new Date().getFullYear())
-            </script> &copy; Haitomns Groups
-          </p>
+        <div class="footer clearfix mb-0 text-muted">
+          <div class="float-start">
+            <p>
+              <script>
+                document.write(new Date().getFullYear())
+              </script> &copy; Haitomns Groups
+            </p>
+          </div>
+          <div class="float-end">
+            <p>
+              Programmed with
+              <span class="text-danger"><i class="bi bi-heart"></i></span> by
+              <a href="https://haitomns.com">Haitomns Groups</a>
+            </p>
+          </div>
         </div>
-        <div class="float-end">
-          <p>
-            Programmed with
-            <span class="text-danger"><i class="bi bi-heart"></i></span> by
-            <a href="https://haitomns.com">Haitomns Groups</a>
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
     </div>
   </div>
 
